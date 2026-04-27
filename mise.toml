@@ -1,0 +1,9 @@
+[tools]
+python = "3.13.13"
+uv = "0.11.8"
+
+[env]
+_.python.venv = { path = ".venv", create = false }
+# Make uv use mise's python instead of its own bundled one
+UV_PYTHON_PREFERENCE = "only-system"
+UV_PYTHON_DOWNLOADS = "never"
