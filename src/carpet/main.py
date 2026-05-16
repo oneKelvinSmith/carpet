@@ -1,5 +1,5 @@
 def main() -> None:
-    print("Hello from play!")
+    print("Hello from carpet!")
 
 
 if __name__ == "__main__":
