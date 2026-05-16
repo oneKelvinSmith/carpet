@@ -30,7 +30,7 @@ dev = [
 ]
 
 [tool.ty.src]
-include = ["src", "packages", "scripts"]
+include = ["src", "packages"]
 
 [tool.ty.environment]
 python = ".venv"

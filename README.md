@@ -54,17 +54,16 @@ uv run pre-commit run --all-files              # run every hook manually
 ├── uv.lock                              # locked deps across the workspace
 ├── mise.toml                            # pinned Python + uv versions
 ├── .pre-commit-config.yaml              # ruff, ty, uv-lock, hygiene hooks
-├── ROADMAP.md                           # NeetCode 150 checklist
 ├── src/carpet/                          # repo entrypoint (uv run carpet)
 │   ├── __init__.py
 │   └── main.py
-├── packages/                            # uv workspace members
-│   └── leetcode/
-│       ├── pyproject.toml
-│       ├── src/leetcode/                # one module per problem
-│       └── tests/                       # pytest tests for the package
-└── scripts/
-    └── new_problem.py                   # scaffolds a new LeetCode problem
+└── packages/                            # uv workspace members
+    └── leetcode/
+        ├── pyproject.toml
+        ├── ROADMAP.md                   # NeetCode 150 checklist
+        ├── src/leetcode/                # one module per problem
+        │   └── _scaffold.py             # scaffolds a new LeetCode problem (new-problem)
+        └── tests/                       # pytest tests for the package
 ```
 
 `src/carpet/main.py` is the root project's CLI entrypoint, registered as
@@ -72,20 +71,20 @@ uv run pre-commit run --all-files              # run every hook manually
 
 ## Adding a new LeetCode problem
 
-1. Pick a problem from `ROADMAP.md`.
+1. Pick a problem from `packages/leetcode/ROADMAP.md`.
 2. Scaffold it:
 
    ```sh
-   uv run python scripts/new_problem.py contains-duplicate
+   uv run new-problem contains-duplicate
    # accepts slug, full LeetCode URL, partial title, or --next
    ```
 
    This creates `packages/leetcode/src/leetcode/<problem>.py` and
    `packages/leetcode/tests/test_<problem>.py`, looking up the title + LeetCode
-   problem number from `ROADMAP.md`.
+   problem number from `packages/leetcode/ROADMAP.md`.
 3. Implement the `Solution` class and uncomment the test parametrize block.
 4. `uv run pytest -k <problem>` while iterating.
-5. Tick the problem off in `ROADMAP.md`.
+5. Tick the problem off in `packages/leetcode/ROADMAP.md`.
 
 The scaffolder also accepts `--next` to grab the first unticked problem
 automatically, or `--module` for problems whose slugs aren't valid Python names

@@ -5,6 +5,9 @@ description = "LeetCode practice problems"
 requires-python = ">=3.13"
 dependencies = []
 
+[project.scripts]
+new-problem = "leetcode._scaffold:main"
+
 [build-system]
 requires = ["uv_build>=0.11,<0.12"]
 build-backend = "uv_build"

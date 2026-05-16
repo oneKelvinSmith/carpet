@@ -5,14 +5,14 @@ argument accepts a slug ('two-sum'), full URL, or a fuzzy partial
 title ('longest substr' -> 'longest-substring-without-repeating-characters').
 
 Usage:
-    uv run python scripts/new_problem.py SLUG_OR_URL_OR_PARTIAL
-    uv run python scripts/new_problem.py --next
+    uv run new-problem SLUG_OR_URL_OR_PARTIAL
+    uv run new-problem --next
 
 Examples:
-    uv run python scripts/new_problem.py contains-duplicate
-    uv run python scripts/new_problem.py https://leetcode.com/problems/two-sum/
-    uv run python scripts/new_problem.py "longest substr"
-    uv run python scripts/new_problem.py --next
+    uv run new-problem contains-duplicate
+    uv run new-problem https://leetcode.com/problems/two-sum/
+    uv run new-problem "longest substr"
+    uv run new-problem --next
 """
 
 from __future__ import annotations
@@ -24,10 +24,11 @@ from pathlib import Path
 
 from rapidfuzz import fuzz, process
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-SRC_DIR = REPO_ROOT / "packages" / "leetcode" / "src" / "leetcode"
-TESTS_DIR = REPO_ROOT / "packages" / "leetcode" / "tests"
-ROADMAP_PATH = REPO_ROOT / "ROADMAP.md"
+# .../packages/leetcode/src/leetcode/_scaffold.py → .../packages/leetcode
+PACKAGE_ROOT = Path(__file__).resolve().parents[3]
+SRC_DIR = PACKAGE_ROOT / "src" / "leetcode"
+TESTS_DIR = PACKAGE_ROOT / "tests"
+ROADMAP_PATH = PACKAGE_ROOT / "ROADMAP.md"
 
 FUZZY_ACCEPT_THRESHOLD = 75  # rapidfuzz WRatio score; above this we auto-accept
 
@@ -208,7 +209,7 @@ def main() -> int:
         for path in (solution_path, test_path):
             if path.exists():
                 print(
-                    f"error: {path.relative_to(REPO_ROOT)} already exists. "
+                    f"error: {path.relative_to(PACKAGE_ROOT)} already exists. "
                     f"Use --force to overwrite.",
                     file=sys.stderr,
                 )
@@ -219,9 +220,9 @@ def main() -> int:
     )
     test_path.write_text(TEST_TEMPLATE.format(module=module))
 
-    print(f"Created {solution_path.relative_to(REPO_ROOT)}")
-    print(f"Created {test_path.relative_to(REPO_ROOT)}")
-    print(f"\nNext: open {solution_path.relative_to(REPO_ROOT)} and implement.")
+    print(f"Created {solution_path.relative_to(PACKAGE_ROOT)}")
+    print(f"Created {test_path.relative_to(PACKAGE_ROOT)}")
+    print(f"\nNext: open {solution_path.relative_to(PACKAGE_ROOT)} and implement.")
     return 0
 
 

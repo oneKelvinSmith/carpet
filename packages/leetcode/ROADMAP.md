@@ -11,16 +11,16 @@ Tick problems off as you finish them: `- [ ]` → `- [x]`.
 To start a new problem, scaffold it:
 
 ```bash
-uv run python scripts/new_problem.py <slug> --number <N>
-# e.g. uv run python scripts/new_problem.py contains-duplicate --number 217
+uv run new-problem <slug>
+# e.g. uv run new-problem contains-duplicate
 ```
 
-This creates `src/leetcode/<slug>.py` and `tests/leetcode/test_<slug>.py`
-with boilerplate. Then implement, run `pytest tests/leetcode/test_<slug>.py`,
-and tick the problem here.
+This creates `src/leetcode/<slug>.py` and `tests/test_<slug>.py`
+(paths relative to `packages/leetcode/`). Then implement, run
+`uv run pytest -k <slug>`, and tick the problem here.
 
 For slugs that aren't valid Python module names (e.g. `3sum`), pass
-`--module`: `uv run python scripts/new_problem.py 3sum --number 15 --module three_sum`.
+`--module`: `uv run new-problem 3sum --module three_sum`.
 
 ---
 
