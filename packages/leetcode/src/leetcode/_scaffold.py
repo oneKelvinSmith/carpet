@@ -25,7 +25,7 @@ from pathlib import Path
 from rapidfuzz import fuzz, process
 
 # .../packages/leetcode/src/leetcode/_scaffold.py → .../packages/leetcode
-PACKAGE_ROOT = Path(__file__).resolve().parents[3]
+PACKAGE_ROOT = Path(__file__).resolve().parents[2]
 SRC_DIR = PACKAGE_ROOT / "src" / "leetcode"
 TESTS_DIR = PACKAGE_ROOT / "tests"
 ROADMAP_PATH = PACKAGE_ROOT / "ROADMAP.md"
