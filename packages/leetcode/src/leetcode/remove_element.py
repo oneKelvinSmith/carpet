@@ -12,7 +12,7 @@ class Solution:
             relative_index = i - shifts
             num = nums[relative_index]
             if num == val:
-                nums[relative_index:] = nums[relative_index + 1 :]
+                nums.pop(relative_index)
                 shifts += 1
 
         return len(nums)
