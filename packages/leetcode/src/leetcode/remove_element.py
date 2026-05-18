@@ -6,12 +6,11 @@ https://leetcode.com/problems/remove-element/
 
 class Solution:
     def remove_element(self, nums: list[int], val: int) -> int:
-        matches: list[int] = []
+        k = 0
 
         for num in nums:
             if num != val:
-                matches.append(num)
+                nums[k] = num
+                k += 1
 
-        nums = matches
-
-        return len(nums)
+        return k
