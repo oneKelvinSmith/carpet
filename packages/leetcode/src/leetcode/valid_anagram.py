@@ -6,4 +6,7 @@ https://leetcode.com/problems/valid-anagram/
 
 class Solution:
     def is_anagram(self, s: str, t: str) -> bool:
-        return len(set(s) - set(t)) == 0
+        if len(s) != len(t):
+            return False
+
+        return not any(a != b for a, b in zip(sorted(s), sorted(t), strict=True))
