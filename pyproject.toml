@@ -2,7 +2,7 @@
 name = "carpet"
 version = "0.1.0"
 description = "Python practice monorepo"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
     "leetcode",
 ]
@@ -34,11 +34,9 @@ include = ["src", "packages"]
 
 [tool.ty.environment]
 python = ".venv"
-python-version = "3.13"
 
 [tool.ruff]
 line-length = 100
-target-version = "py313"
 
 [tool.ruff.lint]
 select = [
