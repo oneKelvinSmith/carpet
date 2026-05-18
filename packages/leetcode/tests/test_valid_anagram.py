@@ -12,6 +12,12 @@ def solution() -> Solution:
     [
         ("anagram", "nagaram", True),
         ("rat", "car", False),
+        ("a", "aa", False),
+        ("aab", "abb", False),
+        ("ab", "abc", False),
+        ("", "", True),
+        ("", "a", False),
+        ("listen", "silent", True),
     ],
 )
 def test_valid_anagram(solution: Solution, s: str, t: str, expected: bool) -> None:
