@@ -9,4 +9,4 @@ class Solution:
         if len(s) != len(t):
             return False
 
-        return not any(a != b for a, b in zip(sorted(s), sorted(t), strict=True))
+        return all(a == b for a, b in zip(sorted(s), sorted(t), strict=True))
