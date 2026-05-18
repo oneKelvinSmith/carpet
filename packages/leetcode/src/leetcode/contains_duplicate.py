@@ -6,4 +6,4 @@ https://leetcode.com/problems/contains-duplicate/
 
 class Solution:
     def contains_duplicate(self, nums: list[int]) -> bool:
-        pass
+        return len(set(nums)) != len(nums)
