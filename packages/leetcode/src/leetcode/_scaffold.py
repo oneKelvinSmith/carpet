@@ -44,7 +44,6 @@ class Solution:
 '''
 
 TEST_TEMPLATE = """import pytest
-
 from leetcode.{module} import Solution
 
 
